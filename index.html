@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+    <div class="top-section flex-center text-center">
+        <div>
+            <h1>Welcome to Our Shop</h1>
+            <button class="button">Explore Now</button>
+        </div>
+    </div>
+
+    <!-- Image Grid -->
+    <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="image-grid grid">
+            <img src="images/grid.png" alt="Placeholder 1" class="image">
+            <img src="images/grid.png" alt="Placeholder 2" class="image">
+            <img src="images/grid.png" alt="Placeholder 3" class="image">
+        </div>
+    </div>
+
+<div class="carousel">
+    <div class="carousel-container" id="carousel-container">
+        <div class="carousel-item">
+            <img src="images/grid.png" alt="Insert picture">
+            <p>Insert picture</p>
+        </div>
+        <div class="carousel-item">
+            <img src="images/grid.png" alt="Insert picture">
+            <p>Insert picture</p>
+        </div>
+        <div class="carousel-item">
+            <img src="images/grid.png" alt="Insert picture">
+            <p>Insert picture</p>
+        </div>
+        <div class="carousel-item">
+            <img src="images/grid.png" alt="Insert picture">
+            <p>Insert picture</p>
+        </div>
+    </div>
+    <div class="carousel-controls">
+        <button id="prev-btn">&#8249;</button>
+        <button id="next-btn">&#8250;</button>
+    </div>
+</div>
+
+
+
+ 
+
+    <script>
+        const carouselContainer = document.getElementById('carousel-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        let currentIndex = 0;
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = carouselContainer.children.length - 1;
+            }
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < carouselContainer.children.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        });
+
+        function updateCarousel() {
+            const itemWidth = carouselContainer.children[0].clientWidth;
+            carouselContainer.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+    </script>
+</body>
+</html>
